@@ -15,8 +15,10 @@ SCRIPT_FOLDER=$(dirname "$0")
 cd "$SCRIPT_FOLDER/.."
 
 # We are still using old version numbers
-VERSIONMAJ="1.0"
-VERSION=$VERSIONMAJ-$BUILD_NUMBER
+# DouDOU_c 指定jicofo版本
+VERSION="1.0.0"
+# VERSIONMAJ="1.0"
+# VERSION=$VERSIONMAJ-$BUILD_NUMBER
 
 # TODO: uncoment the following and move to the new numbering scheme
 ## Let's get version from maven
@@ -39,16 +41,20 @@ VERSION=$VERSIONMAJ-$BUILD_NUMBER
 #VERSION=${VERSION_FULL:1}
 echo "Package version: ${VERSION}"
 
-REV=$(git log --pretty=format:'%h' -n 1)
-dch -v "$VERSION-1" "Build from git. $REV"
-dch -D unstable -r ""
+# DouDOU_d 暂时注释
+# REV=$(git log --pretty=format:'%h' -n 1)
+# dch -v "$VERSION-1" "Build from git. $REV"
+# dch -D unstable -r ""
 
 # sets the version in the pom file so it will propagte to resulting jar
 mvn versions:set -DnewVersion="${VERSION}"
 
 # Install jicofo-common and jicofo-selector to the local maven repo because they
 # are currently not published anywhere else.
-mvn install
+# DouDOU_a 
+# -DskipTests 不执行测试用例，但编译测试用例类生成相应的class文件至target/test-classes下
+# -Dmaven.test.skip=true 不执行测试用例，也不编译测试用例类。
+mvn install -Dmaven.test.skip=true
 
 # We need to make sure all dependencies are downloaded before start building
 # the debian package

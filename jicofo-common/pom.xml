@@ -4,10 +4,10 @@
   <parent>
     <groupId>org.jitsi</groupId>
     <artifactId>jicofo-parent</artifactId>
-    <version>1.1-SNAPSHOT</version>
+    <version>1.0.0</version>
   </parent>
   <artifactId>jicofo-common</artifactId>
-  <version>1.1-SNAPSHOT</version>
+  <version>1.0.0</version>
   <packaging>jar</packaging>
   <name>jicofo-common</name>
   <description>JItsi COnference FOcus is a server side focus component used in Jitsi Meet conferences.</description>

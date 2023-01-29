@@ -13,3 +13,5 @@ jicofo/target/
 .settings/
 **/.idea/
 *.iml
+*.deb
+*.versionsBackup
