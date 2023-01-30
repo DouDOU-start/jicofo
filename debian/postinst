@@ -79,6 +79,9 @@ jicofo {
 }" >> $HOCON_CONFIG
         fi
 
+        # DouDOU_a 希望在生产环境中开启sctp协议
+        hocon -f $HOCON_CONFIG set jicofo.sctp.enabled true
+
         # Make sure the client-proxy is set correctly.
         hocon -f $HOCON_CONFIG set jicofo.xmpp.client.client-proxy "\"focus.$JVB_HOSTNAME\""
 
