@@ -107,6 +107,9 @@ jicofo {
             fi
         fi
 
+        # DouDOU_a 增加jigasi服务
+        hocon -f $HOCON_CONFIG set "jicofo.jigasi.brewery-jid" \"jigasibrewery@internal.auth.${JVB_HOSTNAME}\"
+
         # Mark the jibri domain as trusted unless the trusted-domains have been set.
         if  [[ $(hocon -j -f $HOCON_CONFIG get "jicofo.xmpp.trusted-domains" 2> /dev/null | jq -r "type") != "array" ]] ;then
             hocon -f $HOCON_CONFIG set "jicofo.xmpp.trusted-domains" "[ \"recorder.$JVB_HOSTNAME\" ]"
