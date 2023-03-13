@@ -87,6 +87,12 @@ jicofo {
 
         # Set the client XMPP config in jicofo.conf. The values were either read from an existing
         # /etc/jitsi/jicofo/config or generated above.
+        if ! hocon -f $HOCON_CONFIG get "jicofo.xmpp.client.hostname" > /dev/null 2>&1 ;then
+            hocon -f $HOCON_CONFIG set "jicofo.xmpp.client.hostname" "\"localhost"\"
+        fi
+        if ! hocon -f $HOCON_CONFIG get "jicofo.xmpp.client.port" > /dev/null 2>&1 ;then
+            hocon -f $HOCON_CONFIG set "jicofo.xmpp.client.port" "\"5222"\"
+        fi
         if ! hocon -f $HOCON_CONFIG get "jicofo.xmpp.client.xmpp-domain" > /dev/null 2>&1 ;then
             hocon -f $HOCON_CONFIG set "jicofo.xmpp.client.xmpp-domain" "\"$JICOFO_HOSTNAME\""
         fi
